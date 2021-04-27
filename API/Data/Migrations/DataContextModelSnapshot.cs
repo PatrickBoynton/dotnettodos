@@ -25,7 +25,7 @@ namespace API.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsCompleteØ")
+                    b.Property<bool>("IsCompleted")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
