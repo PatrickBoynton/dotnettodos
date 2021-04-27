@@ -35,13 +35,15 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Todo>> EditTodo(Todo todo)
+        public async Task<ActionResult<Todo>> EditTodo([FromBody]Todo todo, int id)
         {
-            _context.Todos.Update(todo);
+            if (id != todo.Id) return BadRequest();
+            
+            _context.Entry(todo).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
 
-            return Ok(todo);
+            return NoContent();
         }
 
         [HttpDelete]
