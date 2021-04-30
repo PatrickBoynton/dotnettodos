@@ -34,7 +34,7 @@ namespace API.Controllers
             return Ok(todo);
         }
 
-        [HttpPatch("{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Todo>> EditTodo([FromBody]Todo todo, int id)
         {
 
