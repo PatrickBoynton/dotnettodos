@@ -34,11 +34,10 @@ namespace API.Controllers
             return Ok(todo);
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public async Task<ActionResult<Todo>> EditTodo([FromBody]Todo todo, int id)
         {
-            if (id != todo.Id) return BadRequest();
-            
+
             _context.Entry(todo).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
@@ -46,7 +45,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Todo>> DeleteTodo(int id)
         {
             _context.Remove(id);
